@@ -8,10 +8,10 @@
 
 return array(
     'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'sanquan',
-    'username'  => 'myquery',
-    'password'  => 'myquery',
+    'host'      => $_SERVER['DATABASE_HOST'],
+    'database'  => $_SERVER['DATABASE_DB'],
+    'username'  => $_SERVER['DATABASE_USERNAME'],
+    'password'  => $_SERVER['DATABASE_PASS'],
     'charset'   => 'utf8',
     'collation' => 'utf8_general_ci',
     'prefix'    => ''
