@@ -9,5 +9,5 @@
 return array(
     "base_url" => '/',
     "time_zone" => 'Asia/Shanghai',
-
+    "error_log" => 'c:/Wnmp/logs/cs.error.'.date("Y-m-d").'.log',
 );

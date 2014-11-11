@@ -36,3 +36,40 @@ $capsule->bootEloquent();
 $whoops = new \Whoops\Run;
 $whoops->pushHandler( new \Whoops\Handler\PrettyPageHandler );
 $whoops->register();
+
+define('ERROR_LOG', $config['error_log']);
+
+// exception handler
+function exceptionHandler($exception) {
+
+    $errmsg = "[".date("Y-m-d H:i:s")."] ".$exception->getMessage()."\n";
+    $errmsg .= "REQUEST: ".print_r($_REQUEST, true)."\n";
+    $errmsg .= "REQUEST_URI: ".print_r($_SERVER['REQUEST_URI'], true)."\n\n";
+    error_log($errmsg, 3, ERROR_LOG);
+
+    die();
+
+}
+set_exception_handler('exceptionHandler');
+
+// error handler
+function errorHandler($errno, $errstr, $errfile, $errline) {
+    $errmsg = "[".date("Y-m-d H:i:s")."] [{$errno}] {$errstr}\n";
+    $errmsg .= "Error on line {$errline} in {$errfile}\n\n";
+    $errmsg .= "REQUEST: ".print_r($_REQUEST, true)."\n";
+    $errmsg .= "REQUEST_URI: ".print_r($_SERVER['REQUEST_URI'], true)."\n\n";
+
+    error_log($errmsg, 3, ERROR_LOG);
+
+    die();
+}
+set_error_handler("errorHandler");
+
+register_shutdown_function('my_shutdown_function');
+function my_shutdown_function() {
+
+    // 捕获最后的错误
+    if (error_get_last()) {
+        error_log( "[".date("H:i:s")."]".print_r(error_get_last(), true)."\n\n", 3, ERROR_LOG);
+    }
+}

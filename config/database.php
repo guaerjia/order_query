@@ -11,7 +11,7 @@ return array(
     'host'      => $_SERVER['DATABASE_HOST'],
     'database'  => $_SERVER['DATABASE_DB'],
     'username'  => $_SERVER['DATABASE_USERNAME'],
-    'password'  => $_SERVER['DATABASE_PASS'],
+    'password'  => $_SERVER['DATABASE_USERPASS'],
     'charset'   => 'utf8',
     'collation' => 'utf8_general_ci',
     'prefix'    => ''
