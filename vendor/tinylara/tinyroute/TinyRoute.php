@@ -60,6 +60,8 @@ class TinyRoute {
     $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $method = $_SERVER['REQUEST_METHOD'];
 
+      //var_dump($uri);var_dump($method);exit();
+
     $searches = array_keys(static::$patterns);
     $replaces = array_values(static::$patterns);
 
