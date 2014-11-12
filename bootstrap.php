@@ -12,7 +12,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 define('BASE_PATH', __DIR__);
 
 // TIME_ZONE
-date_default_timezone_get($config['time_zone']);
+//date_default_timezone_get($config['time_zone']);
 
 // VIEW_BASE_PATH
 define('VIEW_BASE_PATH', BASE_PATH . '/app/views/');
